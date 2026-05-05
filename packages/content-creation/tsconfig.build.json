@@ -8,5 +8,11 @@
     "noEmit": false,
     "emitDeclarationOnly": false
   },
-  "exclude": ["**/*.test.ts", "**/*.test.tsx", "node_modules", "dist"]
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "node_modules",
+    "dist",
+    "src/_baseline-rws"
+  ]
 }
