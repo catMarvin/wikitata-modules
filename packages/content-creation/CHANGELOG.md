@@ -80,3 +80,11 @@
 - **Deferred to v0.2.1+** (need extra adapters): `video` (Kling poller), `stitch` (ffmpeg adapter), `archive` (ArchiveStore), `transformImage` (Fal adapter), `backfillAnchors` (RWS-specific FS→cloud sync), `writeProject` (RWS-specific snapshot wrap). RWS continues to run these from its own copy.
 - 11 of 18 backdrop handlers now in package · 7 deferred · 0 baseline backdrop files remaining once step4 is closed.
 - Build clean.
+
+## 0.2.0-step5 — 2026-05-05
+
+- **CompositionStore**: `src/persistence/composition-store.ts` — `CompositionStore` interface + `JsonCompositionStore` (StorageAdapter-backed JSON document, default path `compositions.json`).
+- **3 compositor routes converted**: `list` (GET), `asset` (GET/POST — multipart upload + safe-name slugifier; configurable `assetPrefix`, default `assets`), `byId` (GET/POST/DELETE — accepts resolved id at handler-bind time so it stays framework-neutral).
+- `createCompositorRoutes(deps): CompositorRoutes` factory.
+- Bake (Playwright + ffmpeg rasterizer) deferred to v0.2.1 — needs heavyweight peer deps.
+- Build clean.

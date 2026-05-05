@@ -4,7 +4,16 @@
 // file that has been promoted out of src/_baseline-rws/ into its real home.
 // See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.2.0-step4e' as const;
+export const VERSION = '0.2.0-step5' as const;
+
+// Compositor routes
+export type { CompositorRoutes, CreateCompositorRoutesDeps } from './routes/index.js';
+export { createCompositorRoutes } from './routes/index.js';
+export {
+  JsonCompositionStore,
+  type CompositionStore,
+  type JsonCompositionStoreConfig,
+} from './persistence/index.js';
 
 // Cost constants
 export { COST_PER } from './lib/cost-constants.js';

@@ -4,6 +4,11 @@
  */
 
 export { JsonSpecStore, type SpecStore, type JsonSpecStoreConfig } from './spec-store.js';
+export {
+  JsonCompositionStore,
+  type CompositionStore,
+  type JsonCompositionStoreConfig,
+} from './composition-store.js';
 
 export type {
   CostLogEntry,
