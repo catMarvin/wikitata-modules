@@ -1,6 +1,6 @@
 {
   "name": "@wikitata/content-creation",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Video Designer (AI-describe → render → blend) + Compositor (layered titling) — shared module across the wikiTaTa ecosystem",
   "license": "MIT",
   "repository": {
@@ -31,6 +31,10 @@
     "./migrations": {
       "types": "./dist/migrations/index.d.ts",
       "import": "./dist/migrations/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
     }
   },
   "files": [

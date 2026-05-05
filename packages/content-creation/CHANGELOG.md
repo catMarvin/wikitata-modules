@@ -88,3 +88,41 @@
 - `createCompositorRoutes(deps): CompositorRoutes` factory.
 - Bake (Playwright + ffmpeg rasterizer) deferred to v0.2.1 — needs heavyweight peer deps.
 - Build clean.
+
+## 0.2.0 — 2026-05-05 — RELEASED
+
+Genericization milestone reached. v0.2.0 ships the framework-neutral runtime
+surface for Video Designer + Compositor: route factories, adapters, persistence,
+schema, headless components, and a migration runner.
+
+### Highlights
+- **Framework-neutral routes**: `(req: Request) => Promise<Response>` handlers,
+  mountable in Next.js / Hono / Express / etc.
+- **11 of 18 backdrop routes** + **3 of 4 compositor routes** shipped.
+- **Storage**: FsAdapter + SupabaseStorageAdapter.
+- **AI**: VercelAIGatewayAdapter (image, chat, usage, models).
+- **Persistence**: SpecStore, CompositionStore, CostLog/GenLog/BatchSpendLog
+  (interfaces + Supabase impls + Noop stubs).
+- **Headless components**: Composition, HeroVideo.
+- **Migrations**: cost_log, gen_log, batch_spend_log tables; idempotent runner
+  with consumer-supplied SQL client.
+- **Subpath exports**: `/components`, `/routes`, `/adapters`, `/migrations`.
+- **README + MIGRATION.md** documenting adoption flow for RWS + wikitata.
+
+### Deferred to v0.2.1 (paired with consumer adoption tests)
+- Admin React components: BackdropAdmin (2,235 LOC), CompositorAdmin (647 LOC), CompositorRender (35 LOC).
+- Backdrop video route (Kling poller adapter).
+- Backdrop stitch route (ffmpeg adapter).
+- Backdrop archive route (ArchiveStore).
+- Backdrop transformImage route (Fal AI adapter).
+- Backdrop backfillAnchors / writeProject (RWS-specific use cases).
+- Compositor bake route (Playwright + ffmpeg).
+
+### Spec & style anchors
+- Extraction spec: wikiTaTa card `bc951384`.
+- Style canon: card `68c40443` (Steel blue).
+- UI Model: card `dd5b4e22`.
+- Module Resource Library parent: card `e10d895e`.
+
+### Source provenance
+- Initial baseline: RWS commit `b330f7d` (2026-05-05).

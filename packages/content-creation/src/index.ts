@@ -4,7 +4,11 @@
 // file that has been promoted out of src/_baseline-rws/ into its real home.
 // See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.2.0-step5' as const;
+export const VERSION = '0.2.0' as const;
+export const STATUS = 'released' as const;
+
+// Migrations
+export { runMigrations, type RunMigrationsOptions, type SqlRunner } from './migrations/index.js';
 
 // Compositor routes
 export type { CompositorRoutes, CreateCompositorRoutesDeps } from './routes/index.js';
@@ -59,7 +63,6 @@ export { defaultBridgePrompt, rebuildSegments, assertValidSpec } from './lib/spe
 
 // Persistence
 export { JsonSpecStore, type SpecStore, type JsonSpecStoreConfig } from './persistence/index.js';
-export const STATUS = 'genericizing' as const;
 
 // Adapters
 export type {
