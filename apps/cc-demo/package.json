@@ -1,0 +1,25 @@
+{
+  "name": "@wikitata/cc-demo",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Wikitata-side adoption demo for @wikitata/content-creation. Minimal Next.js App Router showcasing route mounts + the canonical /content-creation/{video-designer,compositor} URL shape.",
+  "type": "module",
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@wikitata/content-creation": "workspace:*",
+    "next": "^16.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.5",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.6.3"
+  }
+}

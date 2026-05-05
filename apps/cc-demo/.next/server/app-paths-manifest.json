@@ -1,0 +1,7 @@
+{
+  "/_global-error/page": "app/_global-error/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/content-creation/compositor/list/route": "app/content-creation/compositor/list/route.js",
+  "/content-creation/video-designer/models/route": "app/content-creation/video-designer/models/route.js",
+  "/page": "app/page.js"
+}
