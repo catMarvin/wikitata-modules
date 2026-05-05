@@ -19,6 +19,9 @@ import { makeGenLogHandlers, type GenLogRouteDeps } from './log.js';
 import { makeBatchLogHandlers, type BatchSpendRouteDeps } from './batch-log.js';
 import { makeAnchorHandlers, type AnchorRouteDeps } from './anchor.js';
 import { makeReassessHandlers, type ReassessRouteDeps } from './reassess.js';
+import { makeUploadHandlers, type UploadRouteDeps } from './upload.js';
+import { makePromoteLabHandlers, type PromoteLabRouteDeps } from './promote-lab.js';
+import { makeNormalizeAnchorHandlers, type NormalizeAnchorRouteDeps } from './normalize-anchor.js';
 
 export interface BackdropRoutes {
   models: { GET: RouteHandler };
@@ -32,8 +35,12 @@ export interface BackdropRoutes {
   batchLog: { GET: RouteHandler; POST: RouteHandler };
   anchor: { POST: RouteHandler };
   reassess: { POST: RouteHandler };
-  // Subsequent steps add: video, stitch, upload, archive, normalizeAnchor,
-  // backfillAnchors, promoteLab, transformImage, writeProject.
+  upload: { POST: RouteHandler };
+  promoteLab: { POST: RouteHandler };
+  normalizeAnchor: { POST: RouteHandler };
+  // Deferred to v0.2.1+: video (Kling poller adapter), stitch (ffmpeg adapter),
+  // archive (ArchiveStore), transformImage (Fal adapter), backfillAnchors
+  // (RWS-specific FS→cloud bulk push), writeProject (RWS-specific snapshot wrap).
 }
 
 export interface CreateBackdropRoutesDeps extends RouteDeps {
@@ -65,5 +72,8 @@ export function createBackdropRoutes(deps: CreateBackdropRoutesDeps): BackdropRo
     batchLog: makeBatchLogHandlers(batchDeps),
     anchor: makeAnchorHandlers(anchorDeps),
     reassess: makeReassessHandlers(reassessDeps),
+    upload: makeUploadHandlers(deps as UploadRouteDeps),
+    promoteLab: makePromoteLabHandlers(deps as PromoteLabRouteDeps),
+    normalizeAnchor: makeNormalizeAnchorHandlers(deps as NormalizeAnchorRouteDeps),
   };
 }

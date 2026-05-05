@@ -72,3 +72,11 @@
   - `reassess` (POST) — Claude haiku visual-director check via `AIAdapter.generateChat`, parse strict JSON verdict, log cost. Anchor file discovery via `storage.listDir('anchors')`.
 - 7 baseline routes remain: video, stitch, upload, archive, normalize-anchor, backfill-anchors, promote-lab, transform-image, write-project.
 - Build clean.
+
+## 0.2.0-step4e — 2026-05-05
+
+- **Sharp normalize helper**: `src/lib/normalize.ts` — `normalizeToAspect(bytes, aspect)` (center cover-crop + resize to PNG; skips when input within 1% of target ratio).
+- **3 routes converted**: `upload` (multipart formData + sharp normalize + raw preserve), `promoteLab` (storage.copyFile from `lab/` → `anchors/`), `normalizeAnchor` (re-normalize latest anchor file with original preserved).
+- **Deferred to v0.2.1+** (need extra adapters): `video` (Kling poller), `stitch` (ffmpeg adapter), `archive` (ArchiveStore), `transformImage` (Fal adapter), `backfillAnchors` (RWS-specific FS→cloud sync), `writeProject` (RWS-specific snapshot wrap). RWS continues to run these from its own copy.
+- 11 of 18 backdrop handlers now in package · 7 deferred · 0 baseline backdrop files remaining once step4 is closed.
+- Build clean.
