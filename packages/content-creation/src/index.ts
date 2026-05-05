@@ -1,7 +1,27 @@
 // @wikitata/content-creation — root export
 //
-// v0.1.0 is a placeholder scaffold. Real exports land in v0.1.1 once the RWS
-// source is copied in verbatim. See package README + wikitata card bc951384.
+// Genericization in progress. Each export below corresponds to a baseline
+// file that has been promoted out of src/_baseline-rws/ into its real home.
+// See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.1.1';
-export const STATUS = 'baseline' as const;
+export const VERSION = '0.2.0-step1' as const;
+export const STATUS = 'genericizing' as const;
+
+// Schema — framework-agnostic types describing compositions, layers, transitions.
+export type {
+  Box,
+  Transition,
+  TransitionKind,
+  Layer,
+  TextLayer,
+  ImageLayer,
+  VideoLayer,
+  Composition,
+} from './lib/composition.js';
+
+export {
+  aspectRatioToNumber,
+  effectiveOpacity,
+  transitionStyle,
+  seedCompositions,
+} from './lib/composition.js';

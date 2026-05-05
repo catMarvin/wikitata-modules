@@ -13,3 +13,9 @@
 - Establishes export surface, peer deps, build script.
 - Next: v0.1.1 will copy RWS source verbatim into `src/`.
 - Spec: wikiTaTa card `bc951384`.
+
+## 0.2.0-step1 — 2026-05-05
+
+- **Schema lift**: `lib/composition.ts` (257 LOC, framework-agnostic types + helpers) promoted from `src/_baseline-rws/lib/` to `src/lib/`. Baseline twin deleted. Barrel exports `Box`, `Transition`, `Layer`, `Composition` types + `aspectRatioToNumber`, `effectiveOpacity`, `transitionStyle`, `seedCompositions`.
+- Build verified — `dist/` emits clean from `tsc -p tsconfig.build.json`.
+- 23 baseline files remain in `src/_baseline-rws/` for steps 2-7.
