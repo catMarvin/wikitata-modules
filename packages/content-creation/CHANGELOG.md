@@ -19,3 +19,11 @@
 - **Schema lift**: `lib/composition.ts` (257 LOC, framework-agnostic types + helpers) promoted from `src/_baseline-rws/lib/` to `src/lib/`. Baseline twin deleted. Barrel exports `Box`, `Transition`, `Layer`, `Composition` types + `aspectRatioToNumber`, `effectiveOpacity`, `transitionStyle`, `seedCompositions`.
 - Build verified — `dist/` emits clean from `tsc -p tsconfig.build.json`.
 - 23 baseline files remain in `src/_baseline-rws/` for steps 2-7.
+
+## 0.2.0-step2 — 2026-05-05
+
+- **Storage adapter contract**: `StorageAdapter` interface in `src/adapters/storage.ts` — readFile, writeFile, deleteFile, copyFile, exists, stat, listDir, publicUrl. Path traversal rejected at the adapter boundary via `assertSafePath()`.
+- **FsAdapter**: Node `fs/promises` impl rooted at a configured `baseDir`, optional `urlPrefix` for public URLs (e.g. `/generated`).
+- **SupabaseStorageAdapter**: Supabase Storage bucket impl. Consumer provides their own client (peer-deps-style); supports public buckets via `getPublicUrl()` and private via async `signedUrl()`.
+- **Tests**: 8 vitest cases on FsAdapter (round-trip, exists, listDir, idempotent delete, copyFile parents, urlPrefix, traversal rejection, baseDir-must-be-absolute). All passing.
+- Barrel: adapters surfaced through `src/index.ts` + `@wikitata/content-creation/adapters` subpath.

@@ -4,8 +4,24 @@
 // file that has been promoted out of src/_baseline-rws/ into its real home.
 // See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.2.0-step1' as const;
+export const VERSION = '0.2.0-step2' as const;
 export const STATUS = 'genericizing' as const;
+
+// Adapters — storage today; AI + DB in later steps.
+export type {
+  StorageAdapter,
+  FileInfo,
+  FileBytes,
+  FsAdapterConfig,
+  SupabaseStorageAdapterConfig,
+  MinimalSupabaseStorageClient,
+} from './adapters/index.js';
+
+export {
+  FsAdapter,
+  SupabaseStorageAdapter,
+  assertSafePath,
+} from './adapters/index.js';
 
 // Schema — framework-agnostic types describing compositions, layers, transitions.
 export type {
