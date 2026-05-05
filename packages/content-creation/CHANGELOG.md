@@ -51,3 +51,12 @@
 - `createBackdropRoutes(deps): BackdropRoutes` factory returns prebound handlers.
 - 14 baseline routes remain in `_baseline-rws/api/admin/gen/` for steps 4c–4e.
 - Build clean.
+
+## 0.2.0-step4c — 2026-05-05
+
+- **Spec schema lifted**: `src/lib/spec.ts` — `Spec`, `SpecAnchor`, `SpecSegment`, `PromptHistoryEntry` types + `defaultBridgePrompt`, `rebuildSegments`, `assertValidSpec` helpers. Lifted from RWS `src/lib/spec-store.ts` (framework-agnostic portion).
+- **JsonSpecStore**: `src/persistence/spec-store.ts` — `SpecStore` interface + JSON-on-StorageAdapter impl. Configurable path + project-supplied `defaultSpec` factory + optional `bridgePrompt` override. DB-backed variant lands step 7.
+- **4 routes converted**: `spec` (GET+POST), `specInsert` (POST), `specDelete` (POST), `state` (GET — aggregated editor state with anchor/segment file presence via `StorageAdapter.listDir`).
+- `createBackdropRoutes()` now requires `specStore` in its deps.
+- 11 baseline routes remain in `_baseline-rws/api/admin/gen/`: anchor, video, reassess, stitch, upload, archive, log, batch-log, normalize-anchor, backfill-anchors, promote-lab, transform-image, write-project.
+- Build clean.

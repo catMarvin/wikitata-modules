@@ -11,4 +11,4 @@ export type {
 
 export { jsonResponse, errorResponse, withAdmin } from './types.js';
 
-export { createBackdropRoutes, type BackdropRoutes } from './backdrop/index.js';
+export { createBackdropRoutes, type BackdropRoutes, type CreateBackdropRoutesDeps } from './backdrop/index.js';
