@@ -10,7 +10,7 @@ import {
   aspectRatioToNumber,
   effectiveOpacity,
   transitionStyle,
-} from '@/lib/composition';
+} from '../lib/composition.js';
 
 type Props = {
   comp: Composition;

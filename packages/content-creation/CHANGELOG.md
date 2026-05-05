@@ -27,3 +27,10 @@
 - **SupabaseStorageAdapter**: Supabase Storage bucket impl. Consumer provides their own client (peer-deps-style); supports public buckets via `getPublicUrl()` and private via async `signedUrl()`.
 - **Tests**: 8 vitest cases on FsAdapter (round-trip, exists, listDir, idempotent delete, copyFile parents, urlPrefix, traversal rejection, baseDir-must-be-absolute). All passing.
 - Barrel: adapters surfaced through `src/index.ts` + `@wikitata/content-creation/adapters` subpath.
+
+## 0.2.0-step3 — 2026-05-05
+
+- **Headless components lifted**: `Composition.tsx` (212 LOC) + `HeroVideo.tsx` (45 LOC) promoted from `_baseline-rws/components/` to `src/components/`. Import alias `@/lib/composition` rewritten to relative `../lib/composition.js`. Baseline twins deleted.
+- Both components are framework-agnostic React (use only `useEffect`/`useRef`/`useState`). They consume URL strings as props — URL resolution is consumer's job via `StorageAdapter.publicUrl()`.
+- Components barrel at `src/components/index.ts`; subpath export `@wikitata/content-creation/components`.
+- Build clean.
