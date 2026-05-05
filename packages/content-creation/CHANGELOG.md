@@ -41,3 +41,13 @@
 - **VercelAIGatewayAdapter**: `src/adapters/ai-vercel-gateway.ts` — calls AI Gateway's OpenAI-compatible REST surface. Async key getter (no plaintext caching). Cost extracted from `x-vercel-ai-gateway-cost-usd` header.
 - Video generation throws by default in step4a — wires in step4b along with route conversions (Kling i2v needs AI SDK's experimental_generateVideo or direct provider calls; deferring until used).
 - Build clean.
+
+## 0.2.0-step4b — 2026-05-05
+
+- **Route factory shape**: `RouteHandler = (req: Request) => Promise<Response>` — Web-standard. Consumer wires into Next.js / Hono / Express / etc.
+- **AuthAdapter + EnvAdapter** consumer-supplied contracts in `src/routes/types.ts`.
+- **Helpers**: `jsonResponse`, `errorResponse`, `withAdmin` (admin-gated handler wrapper with consistent error mapping).
+- **First three routes converted** (no AI/spec dependencies): `models` (list models), `balance` (gateway usage), `file` (read generated artifact via StorageAdapter).
+- `createBackdropRoutes(deps): BackdropRoutes` factory returns prebound handlers.
+- 14 baseline routes remain in `_baseline-rws/api/admin/gen/` for steps 4c–4e.
+- Build clean.

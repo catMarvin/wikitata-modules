@@ -4,7 +4,11 @@
 // file that has been promoted out of src/_baseline-rws/ into its real home.
 // See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.2.0-step4a' as const;
+export const VERSION = '0.2.0-step4b' as const;
+
+// Routes
+export type { RouteHandler, RouteDeps, AuthAdapter, EnvAdapter, BackdropRoutes } from './routes/index.js';
+export { createBackdropRoutes, jsonResponse, errorResponse, withAdmin } from './routes/index.js';
 export const STATUS = 'genericizing' as const;
 
 // Adapters
