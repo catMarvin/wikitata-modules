@@ -1,0 +1,27 @@
+{
+  "name": "wikitata-modules",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Shared module workspace for the wikiTaTa ecosystem",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/catMarvin/wikitata-modules.git"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@9.12.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "lint": "pnpm -r lint",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.27.9",
+    "typescript": "^5.6.3"
+  }
+}
