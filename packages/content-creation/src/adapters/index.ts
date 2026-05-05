@@ -17,3 +17,22 @@ export {
   type SupabaseStorageAdapterConfig,
   type MinimalSupabaseStorageClient,
 } from './storage-supabase.js';
+
+export type {
+  AIAdapter,
+  ImageGenerateParams,
+  ImageGenerateResult,
+  VideoGenerateParams,
+  VideoGenerateResult,
+  ChatMessage,
+  ChatGenerateParams,
+  ChatGenerateResult,
+  UsageReport,
+  ModelEntry,
+  MeasuredResult,
+} from './ai.js';
+
+export {
+  VercelAIGatewayAdapter,
+  type VercelAIGatewayAdapterConfig,
+} from './ai-vercel-gateway.js';

@@ -34,3 +34,10 @@
 - Both components are framework-agnostic React (use only `useEffect`/`useRef`/`useState`). They consume URL strings as props — URL resolution is consumer's job via `StorageAdapter.publicUrl()`.
 - Components barrel at `src/components/index.ts`; subpath export `@wikitata/content-creation/components`.
 - Build clean.
+
+## 0.2.0-step4a — 2026-05-05
+
+- **AIAdapter contract**: `src/adapters/ai.ts` — generateImage, generateVideo, generateChat, getUsage, listModels. MeasuredResult<T> wrapper attributes per-call cost when the gateway reports it via header.
+- **VercelAIGatewayAdapter**: `src/adapters/ai-vercel-gateway.ts` — calls AI Gateway's OpenAI-compatible REST surface. Async key getter (no plaintext caching). Cost extracted from `x-vercel-ai-gateway-cost-usd` header.
+- Video generation throws by default in step4a — wires in step4b along with route conversions (Kling i2v needs AI SDK's experimental_generateVideo or direct provider calls; deferring until used).
+- Build clean.

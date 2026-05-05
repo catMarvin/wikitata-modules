@@ -4,10 +4,10 @@
 // file that has been promoted out of src/_baseline-rws/ into its real home.
 // See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.2.0-step3' as const;
+export const VERSION = '0.2.0-step4a' as const;
 export const STATUS = 'genericizing' as const;
 
-// Adapters — storage today; AI + DB in later steps.
+// Adapters
 export type {
   StorageAdapter,
   FileInfo,
@@ -15,12 +15,25 @@ export type {
   FsAdapterConfig,
   SupabaseStorageAdapterConfig,
   MinimalSupabaseStorageClient,
+  AIAdapter,
+  ImageGenerateParams,
+  ImageGenerateResult,
+  VideoGenerateParams,
+  VideoGenerateResult,
+  ChatMessage,
+  ChatGenerateParams,
+  ChatGenerateResult,
+  UsageReport,
+  ModelEntry,
+  MeasuredResult,
+  VercelAIGatewayAdapterConfig,
 } from './adapters/index.js';
 
 export {
   FsAdapter,
   SupabaseStorageAdapter,
   assertSafePath,
+  VercelAIGatewayAdapter,
 } from './adapters/index.js';
 
 // Schema — framework-agnostic types describing compositions, layers, transitions.
