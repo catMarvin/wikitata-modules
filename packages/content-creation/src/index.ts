@@ -4,7 +4,34 @@
 // file that has been promoted out of src/_baseline-rws/ into its real home.
 // See spec card bc951384 + CHANGELOG.md.
 
-export const VERSION = '0.2.0-step4c' as const;
+export const VERSION = '0.2.0-step4d' as const;
+
+// Cost constants
+export { COST_PER } from './lib/cost-constants.js';
+
+// Persistence — cost / gen / batch logs
+export type {
+  CostLogEntry,
+  CostLogStore,
+  GenLogEntry,
+  GenLogRow,
+  GenLogStore,
+  BatchSpendLogEntry,
+  BatchSpendLogRow,
+  BatchSpendLogStore,
+  SupabaseCostLogStoreConfig,
+  SupabaseGenLogStoreConfig,
+  SupabaseBatchSpendLogStoreConfig,
+  MinimalSupabaseClient,
+} from './persistence/index.js';
+export {
+  NoopCostLogStore,
+  NoopGenLogStore,
+  NoopBatchSpendLogStore,
+  SupabaseCostLogStore,
+  SupabaseGenLogStore,
+  SupabaseBatchSpendLogStore,
+} from './persistence/index.js';
 
 // Routes
 export type {

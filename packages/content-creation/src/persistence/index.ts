@@ -4,3 +4,30 @@
  */
 
 export { JsonSpecStore, type SpecStore, type JsonSpecStoreConfig } from './spec-store.js';
+
+export type {
+  CostLogEntry,
+  CostLogStore,
+  GenLogEntry,
+  GenLogRow,
+  GenLogStore,
+  BatchSpendLogEntry,
+  BatchSpendLogRow,
+  BatchSpendLogStore,
+} from './cost-log.js';
+
+export {
+  NoopCostLogStore,
+  NoopGenLogStore,
+  NoopBatchSpendLogStore,
+} from './cost-log.js';
+
+export {
+  SupabaseCostLogStore,
+  SupabaseGenLogStore,
+  SupabaseBatchSpendLogStore,
+  type SupabaseCostLogStoreConfig,
+  type SupabaseGenLogStoreConfig,
+  type SupabaseBatchSpendLogStoreConfig,
+  type MinimalSupabaseClient,
+} from './cost-log-supabase.js';

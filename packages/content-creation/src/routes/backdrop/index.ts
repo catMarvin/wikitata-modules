@@ -15,6 +15,10 @@ import { makeFileHandlers } from './file.js';
 import { makeSpecHandlers, type SpecRouteDeps } from './spec.js';
 import { makeSpecInsertHandlers, makeSpecDeleteHandlers } from './spec-mutate.js';
 import { makeStateHandlers } from './state.js';
+import { makeGenLogHandlers, type GenLogRouteDeps } from './log.js';
+import { makeBatchLogHandlers, type BatchSpendRouteDeps } from './batch-log.js';
+import { makeAnchorHandlers, type AnchorRouteDeps } from './anchor.js';
+import { makeReassessHandlers, type ReassessRouteDeps } from './reassess.js';
 
 export interface BackdropRoutes {
   models: { GET: RouteHandler };
@@ -24,18 +28,31 @@ export interface BackdropRoutes {
   specInsert: { POST: RouteHandler };
   specDelete: { POST: RouteHandler };
   state: { GET: RouteHandler };
-  // Subsequent steps will add: anchor, video, stitch, reassess,
-  // upload, archive, log, batchLog, normalizeAnchor, backfillAnchors,
-  // promoteLab, transformImage, writeProject.
+  log: { GET: RouteHandler; POST: RouteHandler; PATCH: RouteHandler };
+  batchLog: { GET: RouteHandler; POST: RouteHandler };
+  anchor: { POST: RouteHandler };
+  reassess: { POST: RouteHandler };
+  // Subsequent steps add: video, stitch, upload, archive, normalizeAnchor,
+  // backfillAnchors, promoteLab, transformImage, writeProject.
 }
 
 export interface CreateBackdropRoutesDeps extends RouteDeps {
-  /** Required for spec/state/insert/delete handlers (introduced in step4c). */
   specStore: SpecRouteDeps['specStore'];
+  genLog: GenLogRouteDeps['genLog'];
+  batchSpendLog: BatchSpendRouteDeps['batchSpendLog'];
+  costLog: AnchorRouteDeps['costLog'];
+  imageModel: AnchorRouteDeps['imageModel'];
+  aspect: AnchorRouteDeps['aspect'];
+  chatModel: ReassessRouteDeps['chatModel'];
+  project?: string;
 }
 
 export function createBackdropRoutes(deps: CreateBackdropRoutesDeps): BackdropRoutes {
   const specDeps: SpecRouteDeps = deps;
+  const genLogDeps: GenLogRouteDeps = deps;
+  const batchDeps: BatchSpendRouteDeps = deps;
+  const anchorDeps: AnchorRouteDeps = deps;
+  const reassessDeps: ReassessRouteDeps = deps;
   return {
     models: makeModelsHandlers(deps),
     balance: makeBalanceHandlers(deps),
@@ -44,5 +61,9 @@ export function createBackdropRoutes(deps: CreateBackdropRoutesDeps): BackdropRo
     specInsert: makeSpecInsertHandlers(specDeps),
     specDelete: makeSpecDeleteHandlers(specDeps),
     state: makeStateHandlers(specDeps),
+    log: makeGenLogHandlers(genLogDeps),
+    batchLog: makeBatchLogHandlers(batchDeps),
+    anchor: makeAnchorHandlers(anchorDeps),
+    reassess: makeReassessHandlers(reassessDeps),
   };
 }

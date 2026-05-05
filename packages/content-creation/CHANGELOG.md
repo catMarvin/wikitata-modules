@@ -60,3 +60,15 @@
 - `createBackdropRoutes()` now requires `specStore` in its deps.
 - 11 baseline routes remain in `_baseline-rws/api/admin/gen/`: anchor, video, reassess, stitch, upload, archive, log, batch-log, normalize-anchor, backfill-anchors, promote-lab, transform-image, write-project.
 - Build clean.
+
+## 0.2.0-step4d — 2026-05-05
+
+- **Persistence stores**: `CostLogStore`, `GenLogStore`, `BatchSpendLogStore` interfaces + Supabase implementations + Noop variants. Defaults: tables `cost_log`, `hero_gen_log`, `hero_batch_spend_log` (overridable per consumer).
+- **Cost constants**: `src/lib/cost-constants.ts` exports `COST_PER` (flux, kling_std/pro, haiku_estimate).
+- **4 routes converted**:
+  - `log` (GET / POST / PATCH) — operation log with archive_visible action.
+  - `batchLog` (GET / POST) — bulk-render summary rows.
+  - `anchor` (POST) — Flux image gen via `AIAdapter.generateImage`, materialize bytes (b64 or URL fetch), write via StorageAdapter, log cost.
+  - `reassess` (POST) — Claude haiku visual-director check via `AIAdapter.generateChat`, parse strict JSON verdict, log cost. Anchor file discovery via `storage.listDir('anchors')`.
+- 7 baseline routes remain: video, stitch, upload, archive, normalize-anchor, backfill-anchors, promote-lab, transform-image, write-project.
+- Build clean.
